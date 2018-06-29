@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GUI-Prototype:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GUI_Prototype_jar</output-path>
+    <root id="archive" name="RPi-EOS-OSC.jar">
+      <element id="module-output" name="RPi-EOS-OSC" />
+    </root>
+  </artifact>
+</component>

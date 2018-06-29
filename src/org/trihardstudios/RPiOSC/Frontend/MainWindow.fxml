@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="480.0" maxWidth="800.0" prefHeight="480.0" prefWidth="800.0" styleClass="ancorpanes" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.trihardstudios.RPiOSC.Frontend.MainWindowController">
+   <children>
+      <TabPane maxHeight="480.0" maxWidth="800.0" prefHeight="480.0" prefWidth="800.0" stylesheets="@style.css" tabClosingPolicy="UNAVAILABLE">
+         <tabs>
+            <Tab closable="false" styleClass="Tab" text="Welcome">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="451.0" prefWidth="782.0" styleClass="ancorpanes" stylesheets="@style.css">
+                     <children>
+                        <Text fill="WHITE" layoutX="55.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="header" text="Welcome to the Lighting Control Panel" wrappingWidth="690.13671875">
+                           <font>
+                              <Font name="Open Sans ExtraBold" size="34.0" />
+                           </font></Text>
+                        <TextField fx:id="consoleIP" layoutX="55.0" layoutY="87.0" promptText="Console IP" styleClass="cmdLine" stylesheets="@style.css" />
+                        <Text fx:id="status" fill="#fff" layoutX="223.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disconnected" textAlignment="CENTER" wrappingWidth="257.13671875">
+                           <font>
+                              <Font name="Open Sans Regular" size="21.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="55.0" layoutY="212.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="207.0" styleClass="commandButtons" stylesheets="@style.css" text="Remote Power Up" textFill="WHITE">
+                           <font>
+                              <Font name="Open Sans Regular" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="connect" layoutX="56.0" layoutY="118.0" mnemonicParsing="false" onAction="#onConnect" prefHeight="25.0" prefWidth="148.0" styleClass="commandButtons" stylesheets="@style.css" text="Connect" textFill="WHITE">
+                           <font>
+                              <Font name="Open Sans Regular" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="55.0" layoutY="237.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="207.0" styleClass="commandButtons" stylesheets="@style.css" text="Remote Shutdown" textFill="WHITE">
+                           <font>
+                              <Font name="Open Sans Regular" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="disconnect" layoutX="56.0" layoutY="150.0" mnemonicParsing="false" onAction="#onDisconnect" prefHeight="25.0" prefWidth="149.0" styleClass="commandButtons" stylesheets="@style.css" text="Disconnect" textFill="WHITE">
+                           <font>
+                              <Font name="Open Sans Regular" size="12.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="exit" layoutX="368.0" layoutY="212.0" mnemonicParsing="false" onAction="#onExit" prefHeight="50.0" prefWidth="226.0" styleClass="commandButtons" stylesheets="@style.css" text="Exit" textFill="WHITE">
+                           <font>
+                              <Font name="Open Sans Regular" size="12.0" />
+                           </font>
+                        </Button>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="keypad" closable="false" disable="true" styleClass="Tab" text="Keypad">
+
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" stylesheets="@style.css">
+                     <children>
+                        <GridPane layoutX="479.0" layoutY="13.0" prefHeight="424.0" prefWidth="307.0" stylesheets="@style.css">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="201.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="201.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="5.0" prefWidth="201.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" maxWidth="398.0" minWidth="10.0" prefWidth="202.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="Amber" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="Tilt" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="AllNPs" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="Green" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="Position MSpeed" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="Lime" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="Filters" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="White" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="All Speed" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="UV" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="Shutter Strobe" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="Red" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="76.0" styleClass="parameterButton" stylesheets="@style.css" text="Pan" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="Intens" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+                              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="parameterButton" stylesheets="@style.css" text="Strobe M" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font></Button>
+                              <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="collumTitle" text="Intensity" textAlignment="CENTER" wrappingWidth="76.13671875">
+                                 <font>
+                                    <Font name="Open Sans Bold" size="16.0" />
+                                 </font></Text>
+                              <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="collumTitle" text="Focus" textAlignment="CENTER" wrappingWidth="79.31640625" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="Open Sans Bold" size="16.0" />
+                                 </font></Text>
+                              <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="collumTitle" text="Color" textAlignment="CENTER" wrappingWidth="77.0" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font name="Open Sans Bold" size="16.0" />
+                                 </font></Text>
+                              <Text fill="WHITE" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="collumTitle" text="Beam" textAlignment="CENTER" wrappingWidth="81.595703125" GridPane.columnIndex="3">
+                                 <font>
+                                    <Font name="Open Sans Bold" size="16.0" />
+                                 </font></Text>
+                           </children>
+                        </GridPane>
+                        <TextField fx:id="cmdLine" editable="false" layoutX="14.0" layoutY="29.0" prefHeight="23.0" prefWidth="457.0" styleClass="cmdLine" stylesheets="@style.css">
+                           <font>
+                              <Font name="Open Sans Regular" size="15.0" />
+                           </font></TextField>
+                        <GridPane layoutX="20.0" layoutY="94.0" prefHeight="332.0" prefWidth="231.0" stylesheets="@style.css">
+                           <children>
+                              <Button fx:id="plus" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onPlus" styleClass="commandButtons" stylesheets="@style.css" text="+" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="thru" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onThru" styleClass="commandButtons" stylesheets="@style.css" text="Thru" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="nine" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onNine" styleClass="commandButtons" stylesheets="@style.css" text="9" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="eight" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onEight" styleClass="commandButtons" stylesheets="@style.css" text="8" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="seven" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSeven" styleClass="commandButtons" stylesheets="@style.css" text="7" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="six" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onSix" styleClass="commandButtons" stylesheets="@style.css" text="6" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="five" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onFive" styleClass="commandButtons" stylesheets="@style.css" text="5" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="four" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onFour" styleClass="commandButtons" stylesheets="@style.css" text="4" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="three" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onThree" styleClass="commandButtons" stylesheets="@style.css" text="3" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="one" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onOne" styleClass="commandButtons" stylesheets="@style.css" text="1" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="minus" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onMinus" styleClass="commandButtons" stylesheets="@style.css" text="-" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="two" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onTwo" styleClass="commandButtons" stylesheets="@style.css" text="2" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="period" layoutX="10.0" layoutY="220.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onPeriod" styleClass="commandButtons" stylesheets="@style.css" text="." textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="zero" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onZero" prefHeight="83.0" prefWidth="77.0" styleClass="commandButtons" stylesheets="@style.css" text="0" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="clear" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onClear" styleClass="commandButtons" stylesheets="@style.css" text="Clear" textAlignment="CENTER" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="201.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="201.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="5.0" prefWidth="201.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="118.0" minHeight="10.0" prefHeight="69.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="141.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="135.0" minHeight="10.0" prefHeight="65.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="146.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="146.0" minHeight="10.0" prefHeight="73.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                        <GridPane layoutX="263.0" layoutY="94.0" prefHeight="332.0" prefWidth="73.0" stylesheets="@style.css">
+                           <children>
+                              <Button fx:id="out" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onOut" styleClass="commandButtons" stylesheets="@style.css" text="Out" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="record" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onRecord" prefHeight="65.0" prefWidth="73.0" styleClass="commandButtons" stylesheets="@style.css" text="Record" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="at" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onAt" styleClass="commandButtons" stylesheets="@style.css" text="\@" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="full" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onFull" prefHeight="81.0" prefWidth="44.0" styleClass="commandButtons" stylesheets="@style.css" text="Full" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="enter" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onEnter" styleClass="commandButtons" stylesheets="@style.css" text="Enter" textAlignment="CENTER" textFill="WHITE" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Open Sans SemiBold" size="12.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="201.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints maxHeight="118.0" minHeight="10.0" prefHeight="66.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="141.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="135.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="146.0" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="146.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="faders" closable="false" disable="true" styleClass="Tab" text="Faders">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="ancorpanes" stylesheets="@style.css">
+                     <children>
+                        <Slider layoutX="71.0" layoutY="79.0" orientation="VERTICAL" prefHeight="329.0" prefWidth="109.0" styleClass="faders" stylesheets="@style.css" />
+                        <Slider layoutX="7.0" layoutY="79.0" orientation="VERTICAL" prefHeight="329.0" prefWidth="109.0" styleClass="faders" stylesheets="@style.css" />
+                        <Slider layoutX="684.0" layoutY="79.0" orientation="VERTICAL" prefHeight="329.0" prefWidth="109.0" styleClass="faders" stylesheets="@style.css" />
+                        <Slider layoutX="611.0" layoutY="79.0" orientation="VERTICAL" prefHeight="329.0" prefWidth="109.0" styleClass="faders" stylesheets="@style.css" />
+                        <Slider layoutX="541.0" layoutY="79.0" orientation="VERTICAL" prefHeight="329.0" prefWidth="109.0" styleClass="faders" stylesheets="@style.css" />
+                        <Slider layoutX="231.0" layoutY="79.0" orientation="VERTICAL" prefHeight="329.0" prefWidth="109.0" styleClass="faders" stylesheets="@style.css" />
+                        <Slider layoutX="309.0" layoutY="79.0" orientation="VERTICAL" prefHeight="329.0" prefWidth="109.0" styleClass="faders" stylesheets="@style.css" />
+                        <Slider layoutX="145.0" layoutY="79.0" orientation="VERTICAL" prefHeight="329.0" prefWidth="109.0" styleClass="faders" stylesheets="@style.css" />
+                        <Slider layoutX="385.0" layoutY="79.0" orientation="VERTICAL" prefHeight="329.0" prefWidth="109.0" styleClass="faders" stylesheets="@style.css" />
+                        <Slider layoutX="467.0" layoutY="79.0" orientation="VERTICAL" prefHeight="329.0" prefWidth="109.0" styleClass="faders" stylesheets="@style.css" />
+                        <Text fill="WHITE" layoutX="18.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Page #" wrappingWidth="161.13671875">
+                           <font>
+                              <Font name="Open Sans Bold" size="27.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="119.0" layoutY="20.0" mnemonicParsing="false" prefHeight="0.0" prefWidth="45.0" styleClass="commandButtons" stylesheets="@style.css" text="Next" textFill="WHITE" />
+                        <Button layoutX="164.0" layoutY="20.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="45.0" styleClass="commandButtons" stylesheets="@style.css" text="Perv" textFill="WHITE" />
+                        <Text fill="WHITE" layoutX="24.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Label">
+                           <font>
+                              <Font name="Open Sans Regular" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="267.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Label">
+                           <font>
+                              <Font name="Open Sans Regular" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="345.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Label">
+                           <font>
+                              <Font name="Open Sans Regular" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="421.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Label">
+                           <font>
+                              <Font name="Open Sans Regular" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="503.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Label">
+                           <font>
+                              <Font name="Open Sans Regular" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="577.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Label">
+                           <font>
+                              <Font name="Open Sans Regular" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="647.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Label">
+                           <font>
+                              <Font name="Open Sans Regular" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="720.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Label">
+                           <font>
+                              <Font name="Open Sans Regular" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="107.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Label">
+                           <font>
+                              <Font name="Open Sans Regular" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="181.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Label">
+                           <font>
+                              <Font name="Open Sans Regular" size="15.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab fx:id="cues" closable="false" disable="true" styleClass="Tab" text="Cues">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="ancorpanes" stylesheets="@style.css">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#514f4f" height="377.0" layoutX="31.0" layoutY="22.0" styleClass="controlArea" width="377.0" />
+                        <Text fill="WHITE" layoutX="39.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subtitle" text="Current Cue" wrappingWidth="143.13671875">
+                           <font>
+                              <Font name="Open Sans Bold" size="23.0" />
+                           </font></Text>
+                        <Text fill="WHITE" layoutX="233.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="subtitle" text="Next Cue" wrappingWidth="149.13671875">
+                           <font>
+                              <Font name="Open Sans Bold" size="23.0" />
+                           </font></Text>
+                        <TextField editable="false" layoutX="39.0" layoutY="77.0" prefHeight="23.0" prefWidth="160.0" styleClass="cueBox" stylesheets="@style.css" />
+                        <TextField editable="false" layoutX="235.0" layoutY="77.0" styleClass="cueBox" stylesheets="@style.css" />
+                        <Button layoutX="39.0" layoutY="132.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="346.0" styleClass="goButton" text="GO!" />
+                        <Button layoutX="39.0" layoutY="244.0" mnemonicParsing="false" prefHeight="102.0" prefWidth="346.0" styleClass="stopButton" text="STOP/BACK" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
