@@ -1,0 +1,64 @@
+[2018/10/11 08:04:46]INFORMATION: Log started at 2018/10/11 08:04:46
+[2018/10/11 08:04:46]ERROR: No arguments
+[2018/10/11 08:04:46]INFORMATION: Creating TX at 127.0.0.1:7001
+[2018/10/11 08:04:46]INFORMATION: TX created at null:7001
+[2018/10/11 08:04:46]INFORMATION: Creating RX at 127.0.0.1:7001
+[2018/10/11 08:04:46]INFORMATION: Created RX at null:7001
+[2018/10/11 08:04:46]INFORMATION: Background Listener created and is ready to start.
+[2018/10/11 08:04:46]INFORMATION: RX and TX created successfully
+[2018/10/11 08:04:46]ERROR: Failed to send data. Resetting
+[2018/10/11 08:04:46]INFORMATION: Closing TX...
+[2018/10/11 08:04:46]INFORMATION: TX closed.
+[2018/10/11 08:04:46]INFORMATION: Closing RX...
+[2018/10/11 08:04:46]INFORMATION: RX Closed.
+[2018/10/11 08:04:46]ERROR: Connection Timed out.
+[2018/10/11 08:04:46]INFORMATION: Creating TX at 127.0.0.1:7001
+[2018/10/11 08:04:46]INFORMATION: TX created at null:7001
+[2018/10/11 08:04:46]INFORMATION: Creating RX at 127.0.0.1:7001
+[2018/10/11 08:04:46]INFORMATION: Created RX at null:7001
+[2018/10/11 08:04:46]INFORMATION: Background Listener created and is ready to start.
+[2018/10/11 08:04:46]INFORMATION: RX and TX created successfully
+[2018/10/11 08:04:46]ERROR: Failed to send data. Resetting
+[2018/10/11 08:04:46]INFORMATION: Closing TX...
+[2018/10/11 08:04:46]INFORMATION: TX closed.
+[2018/10/11 08:04:46]INFORMATION: Closing RX...
+[2018/10/11 08:04:46]INFORMATION: RX Closed.
+[2018/10/11 08:04:46]ERROR: Connection Timed out.
+[2018/10/11 08:04:46]INFORMATION: Creating TX at 127.0.0.1:7001
+[2018/10/11 08:04:46]INFORMATION: TX created at null:7001
+[2018/10/11 08:04:46]INFORMATION: Creating RX at 127.0.0.1:7001
+[2018/10/11 08:04:46]INFORMATION: Created RX at null:7001
+[2018/10/11 08:04:46]INFORMATION: Background Listener created and is ready to start.
+[2018/10/11 08:04:46]INFORMATION: RX and TX created successfully
+[2018/10/11 08:04:46]ERROR: Failed to send data. Resetting
+[2018/10/11 08:04:46]INFORMATION: Closing TX...
+[2018/10/11 08:04:46]INFORMATION: TX closed.
+[2018/10/11 08:04:46]INFORMATION: Closing RX...
+[2018/10/11 08:04:46]INFORMATION: RX Closed.
+[2018/10/11 08:04:46]ERROR: Connection Timed out.
+[2018/10/11 08:04:46]INFORMATION: Creating TX at 127.0.0.1:7001
+[2018/10/11 08:04:46]INFORMATION: TX created at null:7001
+[2018/10/11 08:04:46]INFORMATION: Creating RX at 127.0.0.1:7001
+[2018/10/11 08:04:46]INFORMATION: Created RX at null:7001
+[2018/10/11 08:04:46]INFORMATION: Background Listener created and is ready to start.
+[2018/10/11 08:04:46]INFORMATION: RX and TX created successfully
+[2018/10/11 08:04:46]ERROR: Failed to send data. Resetting
+[2018/10/11 08:04:46]INFORMATION: Closing TX...
+[2018/10/11 08:04:46]INFORMATION: TX closed.
+[2018/10/11 08:04:46]INFORMATION: Closing RX...
+[2018/10/11 08:04:46]INFORMATION: RX Closed.
+[2018/10/11 08:04:46]ERROR: Connection Timed out.
+[2018/10/11 08:04:46]INFORMATION: Creating TX at 10.0.0.1:7001
+[2018/10/11 08:04:46]INFORMATION: TX created at null:7001
+[2018/10/11 08:04:46]INFORMATION: Creating RX at 127.0.0.1:7001
+[2018/10/11 08:04:46]INFORMATION: Created RX at null:7001
+[2018/10/11 08:04:46]INFORMATION: Background Listener created and is ready to start.
+[2018/10/11 08:04:46]INFORMATION: RX and TX created successfully
+[2018/10/11 08:04:46]ERROR: Failed to send data. Resetting
+[2018/10/11 08:04:46]INFORMATION: Closing TX...
+[2018/10/11 08:04:46]INFORMATION: TX closed.
+[2018/10/11 08:04:46]INFORMATION: Closing RX...
+[2018/10/11 08:04:46]INFORMATION: RX Closed.
+[2018/10/11 08:04:46]ERROR: Connection Timed out.
+[2018/10/11 08:04:46]INFORMATION: Exiting...
+[2018/10/11 08:04:46]INFORMATION: Closing Log..

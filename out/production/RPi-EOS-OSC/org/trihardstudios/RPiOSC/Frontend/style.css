@@ -1,0 +1,131 @@
+/*Main Style sheet*/
+.ancorpanes {
+    -fx-background-color: #3e3e3e;
+    -fx-padding: 0px;
+}
+
+.Tab{
+    -fx-background-color: #626262;
+    -fx-border-color: #707070;
+    -fx-pref-width: 195px;
+    -fx-text-base-color: #fff;
+    -fx-background-radius: 0%;
+    -fx-start-margin: 1;
+
+}
+.Tab:pressed{
+    -fx-background-color: #3e3e3e;
+    -fx-border-color: #707070;
+}
+
+.Tab:hover{
+
+    -fx-background-color: #707070;
+    -fx-border-color: #707070;
+
+}
+.tab-down-button {
+    -fx-padding: 0;
+
+}
+.tab-header-background {
+    -fx-background-color:transparent
+}
+
+
+
+.tab-down-button .arrow {
+    -fx-padding: 0;
+}
+
+
+/*Command Panel Style*/
+.parameterButton{
+    -fx-border-color: #707070;
+    -fx-background-color: #6e6e6e;
+    -fx-border-width: 1;
+    -fx-border-radius: 0%;
+    -fx-background-radius: 0%;
+
+
+}
+.parameterButton:pressed{
+    -fx-background-color: #707070;
+    -fx-border-color: #707070;
+
+}
+.parameterButton:hover{
+    -fx-background-color: #707070;
+    -fx-border-color: #707070;
+}
+.commandButtons{
+    -fx-border-color: #858585;
+    -fx-background-color: #7b7b7b;
+    -fx-border-width: 1;
+    -fx-border-radius: 0%;
+    -fx-background-radius: 0%;
+}
+
+.commandButtons:hover{
+    -fx-background-color: #858585;
+    -fx-border-color: #858585;
+}
+
+.commandButtons:pressed{
+    -fx-background-color: #858585;
+    -fx-border-color: #858585;
+
+
+}
+.cmdLine{
+    -fx-background-color: #7b7b7b;
+    -fx-background-radius: 0%;
+    -fx-border-radius: 0%;
+
+
+}
+
+/*Fader Sytle*/
+.faders .track{
+    -fx-control-inner-background: #fff;
+    -fx-border-radius: 0%;
+    -fx-background-radius: 0%;
+    -fx-pref-width: 40px;
+
+
+}
+.faders .thumb {
+    -fx-background-color: #7b7b7b ;
+    -fx-border-radius: 0%;
+    -fx-background-radius: 0%;
+    -fx-pref-height: 45px;
+    -fx-pref-width: 45px;
+}
+
+/*Cue Style*/
+.controlArea{
+    -fx-background-color: #6e6e6e;
+    -fx-background-radius: 0;
+
+
+}
+
+.cueBox{
+    -fx-background-radius: 0%;
+    -fx-border-radius: 0%;
+    -fx-background-color: #858585;
+
+}
+
+.goButton{
+    -fx-background-color: #00c015;
+    -fx-border-radius: 0%;
+    -fx-background-radius: 0%;
+
+}
+
+.stopButton{
+    -fx-background-color: #c80003;
+    -fx-border-radius: 0%;
+    -fx-background-radius: 0%;
+}

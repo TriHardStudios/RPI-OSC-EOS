@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="RPi-EOS-OSC1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/RPi-EOS-OSC/out/artifacts/GUI_Prototype_jar/RPi-EOS-OSC.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
