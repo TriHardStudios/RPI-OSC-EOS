@@ -17,9 +17,9 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
- * An simple (non-bundle) OSC message.
+ * An simple (non-bundle) OSCTest message.
  *
- * An OSC <i>Message</i> is made up of
+ * An OSCTest <i>Message</i> is made up of
  * an <i>Address Pattern</i> (the receiver of the message)
  * and <i>Arguments</i> (the content of the message).
  *
@@ -39,8 +39,8 @@ public class OSCMessage extends AbstractOSCPacket {
 	private List<Object> arguments;
 
 	/**
-	 * Creates an empty OSC Message.
-	 * In order to send this OSC message,
+	 * Creates an empty OSCTest Message.
+	 * In order to send this OSCTest message,
 	 * you need to set the address and optionally some arguments.
 	 */
 	public OSCMessage() {
@@ -49,7 +49,7 @@ public class OSCMessage extends AbstractOSCPacket {
 
 	/**
 	 * Creates an OSCMessage with an address already initialized.
-	 * @param address  the recipient of this OSC message
+	 * @param address  the recipient of this OSCTest message
 	 */
 	public OSCMessage(final String address) {
 		this(address, null);
@@ -58,7 +58,7 @@ public class OSCMessage extends AbstractOSCPacket {
 	/**
 	 * Creates an OSCMessage with an address
 	 * and arguments already initialized.
-	 * @param address  the recipient of this OSC message
+	 * @param address  the recipient of this OSCTest message
 	 * @param arguments  the data sent to the receiver
 	 */
 	public OSCMessage(final String address, final Collection<Object> arguments) {
@@ -71,10 +71,22 @@ public class OSCMessage extends AbstractOSCPacket {
 			this.arguments = new ArrayList<Object>(arguments);
 		}
 	}
+	/**
+	 * Creates an OSCMessage with an address and arguments
+	 * @param address  the recipient of this OSCTest message
+	 * @param arguments  the data sent to the receiver
+	 */
+	public OSCMessage(final String address, final ArrayList<Object> arguments) {
+		checkAddress(address);
+		this.address = address;
+		this.arguments = new ArrayList<Object>(arguments);
+
+	}
+
 
 	/**
 	 * The receiver of this message.
-	 * @return the receiver of this OSC Message
+	 * @return the receiver of this OSCTest Message
 	 */
 	public String getAddress() {
 		return address;
@@ -98,6 +110,7 @@ public class OSCMessage extends AbstractOSCPacket {
 	public void addArgument(final Object argument) {
 		arguments.add(argument);
 		contentChanged();
+
 	}
 
 	/**
@@ -147,14 +160,14 @@ public class OSCMessage extends AbstractOSCPacket {
 		// NOTE We explicitly allow <code>null</code> here,
 		//   because we want to allow to set in a lazy fashion.
 		if ((address != null) && !isValidAddress(address)) {
-			throw new IllegalArgumentException("Not a valid OSC address: " + address);
+			throw new IllegalArgumentException("Not a valid OSCTest address: " + address);
 		}
 	}
 
 	/**
-	 * Checks whether a given string is a valid OSC <i>Address Pattern</i>.
+	 * Checks whether a given string is a valid OSCTest <i>Address Pattern</i>.
 	 * @param address to be checked for validity
-	 * @return true if the supplied string constitutes a valid OSC address
+	 * @return true if the supplied string constitutes a valid OSCTest address
 	 */
 	public static boolean isValidAddress(final String address) {
 		return (address != null)

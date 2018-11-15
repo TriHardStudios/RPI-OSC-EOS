@@ -15,11 +15,11 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * Checks whether an OSC message address matches a given wildcard expression,
- * as specified in the OSC protocol specification.
- * For details, see the "OSC Message Dispatching and Pattern Matching" section on
- * <a href="http://opensoundcontrol.org/spec-1_0">the OSC 1.0 specification</a>.
- * Also supports the path-traversal wildcard "//", as specified in OSC 1.1 (borrowed from XPath).
+ * Checks whether an OSCTest message address matches a given wildcard expression,
+ * as specified in the OSCTest protocol specification.
+ * For details, see the "OSCTest Message Dispatching and Pattern Matching" section on
+ * <a href="http://opensoundcontrol.org/spec-1_0">the OSCTest 1.0 specification</a>.
+ * Also supports the path-traversal wildcard "//", as specified in OSCTest 1.1 (borrowed from XPath).
  *
  * <p>
  * A coarse history of the code in the function
@@ -71,7 +71,7 @@ public class OSCPatternAddressSelector implements AddressSelector {
 	}
 
 	/**
-	 * Splits an OSC message address or address selector pattern into parts that are convenient
+	 * Splits an OSCTest message address or address selector pattern into parts that are convenient
 	 * during the matching process.
 	 * @param addressOrPattern to be split into parts, e.g.: "/hello/", "/hello//world//"
 	 * @return the given address or pattern split into parts: {"hello"}, {"hello, "", "world", ""}
@@ -93,7 +93,7 @@ public class OSCPatternAddressSelector implements AddressSelector {
 	}
 
 	/**
-	 * Tries to match an OSC <i>Address Pattern</i> to a selector,
+	 * Tries to match an OSCTest <i>Address Pattern</i> to a selector,
 	 * both already divided into their parts.
 	 * @param patternParts all the parts of the pattern
 	 * @param ppi index/pointer to the current part of the pattern we are looking at
@@ -148,7 +148,7 @@ public class OSCPatternAddressSelector implements AddressSelector {
 	}
 
 	/**
-	 * Tries to match an OSC <i>Address Pattern</i> part to a part of
+	 * Tries to match an OSCTest <i>Address Pattern</i> part to a part of
 	 * a selector.
 	 * This code was copied and adapted from LibLo,
 	 * and is licensed under the Public Domain.
@@ -324,7 +324,7 @@ public class OSCPatternAddressSelector implements AddressSelector {
 					break;
 
 				/*
-				 * Not part of OSC pattern matching
+				 * Not part of OSCTest pattern matching
 					case '\\':
 						if (p.charAt(pi)) {
 							c = p.charAt(pi)++;

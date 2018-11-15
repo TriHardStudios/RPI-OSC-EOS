@@ -9,12 +9,12 @@
 package com.illposed.osc;
 
 /**
- * Checks whether an OSC <i>Address Pattern</i> fulfills certain criteria.
+ * Checks whether an OSCTest <i>Address Pattern</i> fulfills certain criteria.
  */
 public interface AddressSelector {
 
 	/**
-	 * Checks whether the OSC <i>Address Pattern</i> in question
+	 * Checks whether the OSCTest <i>Address Pattern</i> in question
 	 * matches this selector.
 	 * @param messageAddress for example "/sc/mixer/volume"
 	 * @return true if this matcher selects the message address in question.

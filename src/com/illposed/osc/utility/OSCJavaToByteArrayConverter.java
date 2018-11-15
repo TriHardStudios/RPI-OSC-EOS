@@ -18,11 +18,11 @@ import java.util.Date;
 /**
  * OSCJavaToByteArrayConverter is a helper class that translates
  * from Java types to their byte stream representations according to
- * the OSC spec.
+ * the OSCTest spec.
  *
  * The implementation is based on
  * <a href="http://www.emergent.de">Markus Gaelli</a> and
- * Iannis Zannos's OSC implementation in Squeak (a Smalltalk dialect).
+ * Iannis Zannos's OSCTest implementation in Squeak (a Smalltalk dialect).
  *
  * This version includes bug fixes and improvements from
  * Martin Kaltenbrunner and Alex Potsides.
@@ -255,7 +255,7 @@ public class OSCJavaToByteArrayConverter {
 	}
 
 	/**
-	 * Write the OSC specification type tag for the type a certain Java type
+	 * Write the OSCTest specification type tag for the type a certain Java type
 	 * converts to.
 	 * @param typeClass Class of a Java object in the arguments
 	 */
@@ -282,7 +282,7 @@ public class OSCJavaToByteArrayConverter {
 		} else if (OSCImpulse.class.equals(typeClass)) {
 			stream.write('I');
 		} else {
-			throw new UnsupportedOperationException("Do not know the OSC type for the java class: "
+			throw new UnsupportedOperationException("Do not know the OSCTest type for the java class: "
 					+ typeClass);
 		}
 	}

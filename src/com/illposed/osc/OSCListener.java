@@ -12,14 +12,14 @@ import java.util.Date;
 
 /**
  * Allows to listen to incoming messages that match some selector pattern.
- * In OSC speak, this is a <i>Method</i>, and it listens to <i>Messages</i>.
+ * In OSCTest speak, this is a <i>Method</i>, and it listens to <i>Messages</i>.
  *
  * @author Chandrasekhar Ramakrishnan
  */
 public interface OSCListener {
 
 	/**
-	 * Process a matching, incoming OSC Message.
+	 * Process a matching, incoming OSCTest Message.
 	 * @param time     The time this message is to be executed.
 	 *   <code>null</code> means: process immediately
 	 * @param message  The message to process.

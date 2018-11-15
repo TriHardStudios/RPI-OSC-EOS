@@ -7,7 +7,7 @@
  */
 
 /**
- * Provides utility classes, used internally by the Java OSC API classes.
+ * Provides utility classes, used internally by the Java OSCTest API classes.
  * Users of the library should not need to use these classes directly.
  *
  * @see com.illposed.osc

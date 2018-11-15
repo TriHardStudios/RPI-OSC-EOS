@@ -13,12 +13,12 @@ import java.nio.charset.Charset;
 
 /**
  * OSCPacket is the abstract superclass for the various
- * kinds of OSC Messages.
+ * kinds of OSCTest Messages.
  *
  * The actual packets are:
  * <ul>
- * <li>{@link OSCMessage}: simple OSC messages
- * <li>{@link OSCBundle}: OSC messages with timestamps
+ * <li>{@link OSCMessage}: simple OSCTest messages
+ * <li>{@link OSCBundle}: OSCTest messages with timestamps
  *   and/or made up of multiple messages
  * </ul>
  */
@@ -45,7 +45,7 @@ abstract class AbstractOSCPacket implements OSCPacket {
 
 	/**
 	 * Generate a representation of this packet conforming to the
-	 * the OSC byte stream specification. Used Internally.
+	 * the OSCTest byte stream specification. Used Internally.
 	 */
 	private byte[] computeByteArray() {
 		final OSCJavaToByteArrayConverter stream = new OSCJavaToByteArrayConverter();
@@ -56,7 +56,7 @@ abstract class AbstractOSCPacket implements OSCPacket {
 	/**
 	 * Produces a byte array representation of this packet.
 	 * @param stream where to write the arguments to
-	 * @return the OSC specification conform byte array representation
+	 * @return the OSCTest specification conform byte array representation
 	 *   of this packet
 	 */
 	protected abstract byte[] computeByteArray(OSCJavaToByteArrayConverter stream);

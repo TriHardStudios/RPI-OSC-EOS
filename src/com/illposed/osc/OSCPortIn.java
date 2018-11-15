@@ -14,11 +14,12 @@ import com.illposed.osc.utility.OSCPatternAddressSelector;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
+import java.net.InetAddress;
 import java.net.SocketException;
 import java.nio.charset.Charset;
 
 /**
- * OSCPortIn is the class that listens for OSC messages.
+ * OSCPortIn is the class that listens for OSCTest messages.
  *
  * An example:<br>
  * (loosely based on {com.illposed.osc.OSCPortTest#testReceiving()})
@@ -48,10 +49,11 @@ public class OSCPortIn extends OSCPort implements Runnable {
 	static final int BUFFER_SIZE = 65507;
 
 	/** state for listening */
-	private boolean listening;
+	private volatile boolean listening;
 	private final OSCByteArrayToJavaConverter converter;
 	private final OSCPacketDispatcher dispatcher;
 	private Thread listeningThread;
+
 
 	/**
 	 * Create an OSCPort that listens using a specified socket.
@@ -65,6 +67,9 @@ public class OSCPortIn extends OSCPort implements Runnable {
 		this.listeningThread = null;
 	}
 
+	public OSCPortIn (final int port, final InetAddress address) throws SocketException{
+		this(new DatagramSocket(port, address));
+	}
 	/**
 	 * Create an OSCPort that listens on the specified port.
 	 * Strings will be decoded using the systems default character set.
@@ -92,7 +97,7 @@ public class OSCPortIn extends OSCPort implements Runnable {
 	}
 
 	/**
-	 * Run the loop that listens for OSC on a socket until
+	 * Run the loop that listens for OSCTest on a socket until
 	 * {@link #isListening()} becomes false.
 	 * @see java.lang.Runnable#run()
 	 */
@@ -118,7 +123,7 @@ public class OSCPortIn extends OSCPort implements Runnable {
 						packet.getLength());
 				dispatcher.dispatchPacket(oscPacket);
 			} catch (IOException ex) {
-				//ex.printStackTrace(); // XXX This may not be a good idea, as this could easily lead to a never ending series of exceptions thrown (due to the non-exited while loop), and because the user of the lib may want to handle this case himself
+				ex.printStackTrace(); // XXX This may not be a good idea, as this could easily lead to a never ending series of exceptions thrown (due to the non-exited while loop), and because the user of the lib may want to handle this case himself
 			}
 		}
 	}

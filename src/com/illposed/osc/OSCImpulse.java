@@ -9,10 +9,10 @@
 package com.illposed.osc;
 
 /**
- * An OSC 1.0 optional, and OSC 1.1 required argument type.
+ * An OSCTest 1.0 optional, and OSCTest 1.1 required argument type.
  * Impulse aka "bang", is used for event triggers.
  * No bytes are allocated in the argument data.
- * This type was named "Infinitum" in OSC 1.0.
+ * This type was named "Infinitum" in OSCTest 1.0.
  * Use like this:
  * <blockquote><pre>{@code
  * OSCMessage msg = new OSCMessage("/my/address");

@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * Utility class to convert a byte array,
- * conforming to the OSC byte stream format,
+ * conforming to the OSCTest byte stream format,
  * into Java objects.
  *
  * @author Chandrasekhar Ramakrishnan
@@ -98,9 +98,9 @@ public class OSCByteArrayToJavaConverter {
 	/**
 	 * Converts a byte array into an {@link OSCPacket}
 	 * (either an {@link OSCMessage} or {@link OSCBundle}).
-	 * @param bytes the storage containing the raw OSC packet
+	 * @param bytes the storage containing the raw OSCTest packet
 	 * @param bytesLength indicates how many bytes the package consists of (<code>&lt;= bytes.length</code>)
-	 * @return the successfully parsed OSC packet; in case of a problem,
+	 * @return the successfully parsed OSCTest packet; in case of a problem,
 	 *   a <code>RuntimeException</code> is thrown
 	 */
 	public OSCPacket convert(byte[] bytes, int bytesLength) {
@@ -118,10 +118,10 @@ public class OSCByteArrayToJavaConverter {
 
 	/**
 	 * Checks whether my byte array is a bundle.
-	 * From the OSC 1.0 specifications:
+	 * From the OSCTest 1.0 specifications:
 	 * <quote>
-	 * The contents of an OSC packet must be either an OSC Message
-	 * or an OSC Bundle. The first byte of the packet's contents unambiguously
+	 * The contents of an OSCTest packet must be either an OSCTest Message
+	 * or an OSCTest Bundle. The first byte of the packet's contents unambiguously
 	 * distinguishes between these two alternatives.
 	 * </quote>
 	 * @return true if it the byte array is a bundle, false o.w.
@@ -221,7 +221,7 @@ public class OSCByteArrayToJavaConverter {
 		final String typesStr;
 
 		// The next byte should be a ',', but some legacy code may omit it
-		// in case of no arguments, refering to "OSC Messages" in:
+		// in case of no arguments, refering to "OSCTest Messages" in:
 		// http://opensoundcontrol.org/spec-1_0
 		if (rawInput.getBytes().length <= rawInput.getStreamPosition()) {
 			typesStr = NO_ARGUMENT_TYPES;
@@ -275,7 +275,7 @@ public class OSCByteArrayToJavaConverter {
 				//   incomming message):
 				//   just ignore (return null), or throw an exception?
 //				throw new UnsupportedOperationException(
-//						"Invalid or not yet supported OSC type: '" + type + "'");
+//						"Invalid or not yet supported OSCTest type: '" + type + "'");
 				return null;
 		}
 	}

@@ -17,7 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * A bundle represents a collection of OSC packets
+ * A bundle represents a collection of OSCTest packets
  * (either messages or other bundles)
  * and has a time-tag which can be used by a scheduler to execute
  * a bundle in the future,
@@ -38,7 +38,7 @@ public class OSCBundle extends AbstractOSCPacket {
 	public static final long SECONDS_FROM_1900_TO_1970 = 2208988800L;
 
 	/**
-	 * The Java representation of an OSC timestamp with the semantics of
+	 * The Java representation of an OSCTest timestamp with the semantics of
 	 * "immediately".
 	 */
 	public static final Date TIMESTAMP_IMMEDIATE = new Date(0);
@@ -124,7 +124,7 @@ public class OSCBundle extends AbstractOSCPacket {
 	}
 
 	/**
-	 * Convert the time-tag (a Java Date) into the OSC byte stream.
+	 * Convert the time-tag (a Java Date) into the OSCTest byte stream.
 	 * Used Internally.
 	 * @param stream where to write the time-tag to
 	 */

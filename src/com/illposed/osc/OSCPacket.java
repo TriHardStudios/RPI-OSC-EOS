@@ -12,12 +12,12 @@ import java.nio.charset.Charset;
 
 /**
  * OSCPacket is the abstract superclass for the various
- * kinds of OSC Messages.
+ * kinds of OSCTest Messages.
  *
  * The actual packets are:
  * <ul>
- * <li>{@link OSCMessage}: simple OSC messages
- * <li>{@link OSCBundle}: OSC messages with timestamps
+ * <li>{@link OSCMessage}: simple OSCTest messages
+ * <li>{@link OSCBundle}: OSCTest messages with timestamps
  *   and/or made up of multiple messages
  * </ul>
  */
@@ -37,7 +37,7 @@ public interface OSCPacket {
 	void setCharset(Charset charset);
 
 	/**
-	 * Return the OSC byte stream for this packet.
+	 * Return the OSCTest byte stream for this packet.
 	 * @return byte[]
 	 */
 	byte[] getByteArray();

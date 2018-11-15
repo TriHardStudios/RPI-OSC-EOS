@@ -18,7 +18,7 @@ public class Testanator1000 {
 
 
         }
-        OSC osc = new OSC(ip, 7001);
+        OSCOld osc = new OSCOld(ip, 7001);
 
         osc.test();
         osc.start();

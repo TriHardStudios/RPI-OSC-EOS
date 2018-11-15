@@ -12,7 +12,7 @@ import com.illposed.osc.AddressSelector;
 import java.util.regex.Pattern;
 
 /**
- * Checks whether an OSC <i>Address Pattern</i> matches a given
+ * Checks whether an OSCTest <i>Address Pattern</i> matches a given
  * Java regular expression.
  */
 public class JavaRegexAddressSelector implements AddressSelector {

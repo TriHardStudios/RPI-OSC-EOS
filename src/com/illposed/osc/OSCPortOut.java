@@ -16,10 +16,10 @@ import java.net.SocketException;
 import java.net.UnknownHostException;
 
 /**
- * OSCPortOut is the class that sends OSC messages
+ * OSCPortOut is the class that sends OSCTest messages
  * to a specific address and port.
  *
- * To send an OSC message, call {@link #send(OSCPacket)}.
+ * To send an OSCTest message, call {@link #send(OSCPacket)}.
  *
  * An example:<br>
  * (loosely based on {com.illposed.osc.OSCPortTest#testMessageWithArgs()})
@@ -51,6 +51,8 @@ public class OSCPortOut extends OSCPort {
 	public OSCPortOut(final InetAddress address, final int port, final DatagramSocket socket) {
 		super(socket, port);
 		this.address = address;
+		System.out.println(this.address + " ");
+
 	}
 
 	/**
@@ -61,6 +63,7 @@ public class OSCPortOut extends OSCPort {
 	 */
 	public OSCPortOut(final InetAddress address, final int port) throws SocketException {
 		this(address, port, new DatagramSocket());
+		//System.out.println(address);
 	}
 
 	/**
@@ -84,7 +87,7 @@ public class OSCPortOut extends OSCPort {
 	}
 
 	/**
-	 * Send an OSC packet (message or bundle) to the receiver we are bound to.
+	 * Send an OSCTest packet (message or bundle) to the receiver we are bound to.
 	 * @param aPacket the bundle or message to send
 	 * @throws IOException if a (UDP) socket I/O error occurs
 	 */

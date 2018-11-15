@@ -1,32 +1,55 @@
 package org.trihardstudios.RPiOSC.Frontend;
 
 import javafx.event.ActionEvent;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import org.trihardstudios.RPiOSC.Backend.OSC;
+import javafx.scene.control.*;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-
+import org.trihardstudios.RPiOSC.Backend.OSCOld;
+import org.trihardstudios.RPiOSC.Backend.RemotePowerButton;
+import org.trihardstudios.RPiOSC.Backend.Log;
+import org.trihardstudios.RPiOSC.Backend.OSCTest.OSC;
 public class MainWindowController extends MainWindow {
     //Classes
-    OSC osc;
+    static OSCOld osc =null; //Making this var might fix some issues with duplicate classes being created
     //EOF Classes
 
     //-----------------------------------------------
     //-----------THERE IS A LARGE AMOUNT OF VARS-----
     //-----------------------------------------------
     //Local Vars
-    InetAddress IP;
     int faderPage =1;
+    boolean firstFaderOpen = true;
 
 
 
     //FXML Vars
+    //Faderspane
+    //Set 1
+    @FXML
+    Slider Fader1;
+    @FXML
+    Slider Fader2;
+    @FXML
+    Slider Fader3;
+    @FXML
+    Slider Fader4;
+    @FXML
+    Slider Fader5;
+    @FXML
+    Text Fader1Label;
+    @FXML
+    Text Fader2Label;
+    @FXML
+    Text Fader3Label;
+    @FXML
+    Text Fader4Label;
+    @FXML
+    Text Fader5Label;
+
+
+
+
     //Tabpane
     @FXML
     Tab keypad;
@@ -90,10 +113,12 @@ public class MainWindowController extends MainWindow {
 
 
 
-
     //For welcome
     @FXML
     TextField consoleIP;
+
+    @FXML
+    TextField localIP;
 
     @FXML
     Text status;
@@ -106,13 +131,19 @@ public class MainWindowController extends MainWindow {
 
     @FXML
     Button exit;
+
+    @FXML
+    Button PowerOn;
     //EOF Welcome
 
     //Misc Functions
     private void syntaxChecker(){
+        if(cmdLine.getText().contains("*"))
+            cmdLine.clear();
         if(cmdLine.getText().isEmpty())
             osc.buildMessage("cmd");
-               
+
+
 
     }
     //FXML Functions
@@ -120,215 +151,193 @@ public class MainWindowController extends MainWindow {
 
     @FXML
     protected void onConnect(ActionEvent ae){
-        if(consoleIP.getText().isEmpty())
-            System.err.println("ERROR: Invalid IP");
-        else {
+        if(consoleIP.getText().isEmpty() || localIP.getText().isEmpty()){
+            Log.err("ERROR: Invalid IP");
+            return;
 
-            System.out.println("INFORMATION: Attempting connection...");
-            status.setText("Attempting connection...");
-            status.setStyle("-fx-text-fill: #e2df00");
-            try {
-                IP = InetAddress.getByName(consoleIP.getText());
+        }
+        OSC.setData(7001,consoleIP.getText(), localIP.getText());
+        OSC.start();
 
-            } catch (UnknownHostException UH_EX) {
-                System.err.println("ERROR: Invalid IP");
-                status.setText("");
-                status.setStyle("-fx-text-fill: #C80003");
-                status.setText("Invalid IP");
-                return;//Breaks
-            }
-            osc = new OSC(IP, 7001);
-            int attempts = 0;
-            boolean connectS = false;//Connection Successful
-            while (!connectS && attempts < 10) {
-                if (osc.test()) {
-                    connectS = true;
-                    break;
-                } else
-                    attempts++;
-
-
-            }
-            if (connectS) {
-                status.setText("");
-                status.setStyle("-fx-text-fill: #00c015");
-                status.setText("Connection Successful.");
-                System.out.println("INFORMATION: Connection Successful.");
-                keypad.setDisable(false);
-                faders.setDisable(false);
-                cues.setDisable(false);
-                System.out.println("INFORMATION: Tabs unlocked.");
-                osc.start();
-                consoleIP.setEditable(false);
-                connect.setDisable(true);
-
-            } else if (consoleIP.getText().contains("127.0.0.1")) {
-                status.setText("");
-                status.setStyle("-fx-text-fill: #00c015");
-                status.setText("Developer Override");
-                System.out.println("WARNING: Developer Override");
-                keypad.setDisable(false);
-                faders.setDisable(false);
-                cues.setDisable(false);
-                System.out.println("INFORMATION: Tabs unlocked.");
-                osc.start();
-                consoleIP.setEditable(false);
-                connect.setDisable(true);
-
-            } else {
-                status.setText("");
-                status.setStyle("-fx-text-fill: #c80003");
-                status.setText("Connection Timed out.");
-                System.err.println("ERROR: Connection Timed out.");
-                keypad.setDisable(true);
-                faders.setDisable(true);
-                cues.setDisable(true);
-                osc = null;
-                System.gc();
-                return;
-
-            }
+        if(OSC.isReady() && OSC.getDevOverride()) {
+            status.setText("");
+            status.setStyle("-fx-text-fill: #00c015");
+            status.setText("Developer Override");
+            keypad.setDisable(false);
+            faders.setDisable(false);
+            cues.setDisable(false);
+            Log.info("INFORMATION: Tabs unlocked.");
+            consoleIP.setEditable(false);
+            localIP.setEditable(false);
+            connect.setDisable(true);
+            return;
+        }
+        if(OSC.isReady() && !(OSC.getDevOverride())) {
+            status.setText("");
+            status.setStyle("-fx-text-fill: #00c015");
+            status.setText("Connection Successful.");
+            Log.info("INFORMATION: Connection Successful.");
+            keypad.setDisable(false);
+            faders.setDisable(false);
+            cues.setDisable(false);
+            Log.info("INFORMATION: Tabs unlocked.");
+            consoleIP.setEditable(false);
+            localIP.setEditable(false);
+            connect.setDisable(true);
+            return;
         }
 
-
-
+        status.setText("");
+        status.setStyle("-fx-text-fill: #c80003");
+        status.setText("Connection Timed out.");
+        Log.err("ERROR: Connection Timed out.");
+        keypad.setDisable(true);
+        faders.setDisable(true);
+        cues.setDisable(true);
 
 
     }
 
+
     @FXML
     protected void onDisconnect(ActionEvent ae){
-        if(!(osc == null))
-            osc.stop();
+        if(OSC.isReady())
+            OSC.stop();
         status.setText("Disconnected");
         keypad.setDisable(true);
         faders.setDisable(true);
         cues.setDisable(true);
         consoleIP.setEditable(true);
+        localIP.setEditable(true);
         connect.setDisable(false);
-        osc = null;
-        System.gc();
+
 
     }
 
     @FXML
     protected void onExit(ActionEvent ae){
-        if(!(osc==null))
-            osc.stop();
-        System.out.println("INFORMATION: Exiting...");
+        if(OSC.isReady())
+            OSC.stop();
+        Log.info("INFORMATION: Exiting...");
+        Log.info("INFORMATION: Closing Log..");
+        Log.close();
         System.exit(0);
 
 
+    }
+
+    @FXML
+    protected void onPowerOn(ActionEvent ae){
+        RemotePowerButton.start();
+        RemotePowerButton.send();
+        status.setText("Sent Power Packet");
+        Log.info("INFORMATION: Sent Power Packet");
     }
 
     //CMD pad
     //row 1
     @FXML
     protected void onPlus (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " +");
-        osc.buildMessage("+");
-
+        cmdLine = osc.updateCmcLine(cmdLine, "+");
     }
+
     @FXML
     protected void onThru (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " Thru");
-        osc.buildMessage("Thru");
+        cmdLine = osc.updateCmcLine(cmdLine, "Thru");
+
 
     }
 
     @FXML
     protected void onMinus (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " -");
-        osc.buildMessage("-");
+        cmdLine = osc.updateCmcLine(cmdLine, "-");
+
     }
 
     //Row 2
 
     @FXML
     protected void onOne (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " 1");
-        osc.buildMessage("1");
+        cmdLine = osc.updateCmcLine(cmdLine, "1");
+
 
     }
+
     @FXML
     protected void onTwo (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " 2");
-        osc.buildMessage("2");
+        cmdLine = osc.updateCmcLine(cmdLine, "2");
+
 
     }
+
     @FXML
     protected void onThree (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " 3");
-        osc.buildMessage("3");
+        cmdLine = osc.updateCmcLine(cmdLine, "3");
+
 
     }
+
     //Row 4
     @FXML
     protected void onFour (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " 4");
-        osc.buildMessage("4");
+        cmdLine = osc.updateCmcLine(cmdLine, "4");
+
 
     }
+
     @FXML
     protected void onFive (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " 5");
-        osc.buildMessage("5");
+        cmdLine = osc.updateCmcLine(cmdLine, "5");
+
 
     }
+
     @FXML
     protected void onSix (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " 6");
-        osc.buildMessage("6");
+        cmdLine = osc.updateCmcLine(cmdLine, "6");
+
 
     }
+
     //Row 5
     @FXML
     protected void onSeven (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " 7");
-        osc.buildMessage("7");
+        cmdLine = osc.updateCmcLine(cmdLine, "7");
+
 
     }
+
     @FXML
     protected void onEight (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " 8");
-        osc.buildMessage("8");
+        cmdLine = osc.updateCmcLine(cmdLine, "8");
+
 
     }
+
     @FXML
     protected void onNine (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " 9");
-        osc.buildMessage("9");
+        cmdLine = osc.updateCmcLine(cmdLine, "9");
+
 
     }
+
     //Row 6
     @FXML
     protected void onPeriod (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " Cell");
-        osc.buildMessage("Cell");
+        cmdLine = osc.updateCmcLine(cmdLine, ".");
+
 
     }
+
     @FXML
     protected void onZero (ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " 0");
-        osc.buildMessage("0");
+        cmdLine = osc.updateCmcLine(cmdLine, "0");
+
 
     }
+
     @FXML
-    protected void onClear (ActionEvent ae){//Beef Rague Cheese Suflay Errors live here.
+    protected void onClear (ActionEvent ae){//Beef Rague Cheese Suflay Errors live here. //THIS has NOT been converted to the new version..
         try {
             if (cmdLine.getText().contains("*") || cmdLine.getText().isEmpty())
                 cmdLine.setText("");
@@ -338,7 +347,7 @@ public class MainWindowController extends MainWindow {
             }
             osc.buildMessage("clear");
         }catch (StringIndexOutOfBoundsException SIOOB_EX){
-            System.err.println("ERROR: " + SIOOB_EX);
+            //Log.err("ERROR: " + SIOOB_EX);
             cmdLine.setText("");
             osc.buildMessage("clearAll");
         }
@@ -348,47 +357,50 @@ public class MainWindowController extends MainWindow {
     //Control Buttons
     @FXML
     protected void onOut(ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " @ Out*");
-        osc.buildMessage("@");
-        osc.buildMessage("Out");
-        osc.buildMessage("enter");
-        osc.send();
+        cmdLine = cmdLine = osc.updateCmcLine(cmdLine, "out");
+
     }
 
     @FXML
     protected void onFull(ActionEvent ae){
-       syntaxChecker();
-       cmdLine.setText(cmdLine.getText() + " @ Full");
-       osc.buildMessage("@");
-       osc.buildMessage("Full");
+        cmdLine = osc.updateCmcLine(cmdLine, "full");
+
 
     }
+
     @FXML
     protected void onAt(ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + " @");
-        osc.buildMessage("@");
-    }
-    @FXML
-    protected void onRecord(ActionEvent ae){
-        syntaxChecker();
-        if(!cmdLine.getText().contains("*")) {
-            osc.buildMessage("enter");
-            cmdLine.setText(cmdLine.getText() + "*");
-            osc.send();
-        }
-        cmdLine.setText("Record Next Cue? (Enter to confirm)*");
-        //TODO NEXT CUE
-        cmdLine.setText("");
+        cmdLine = osc.updateCmcLine(cmdLine, "at");
 
     }
+
+    @FXML
+    protected void onRecord(ActionEvent ae){
+        cmdLine = osc.updateCmcLine(cmdLine, "record");
+
+
+    }
+
     @FXML
     protected void onEnter(ActionEvent ae){
-        syntaxChecker();
-        cmdLine.setText(cmdLine.getText() + "*");
-        osc.buildMessage("enter");
-        osc.send();
+        cmdLine = osc.updateCmcLine(cmdLine, "enter");
+
+    }
+
+
+
+
+    //Faders
+    @FXML
+    protected void updateFaders(ActionEvent ae){
+        if(firstFaderOpen){
+            for(int i = 1; i < 5; i++)
+            osc.buildMessage("fader/" + i +"/config/10");
+            osc.send();
+            osc.buildMessage("clearAll");
+
+        }
+
     }
 
 
